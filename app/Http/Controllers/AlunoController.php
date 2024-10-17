@@ -9,7 +9,7 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        $alunos = Aluno::all();
+        $alunos = Aluno::paginate(10);
         return view('alunos.index', compact('alunos'));
     }
 
