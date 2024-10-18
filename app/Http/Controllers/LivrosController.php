@@ -43,15 +43,16 @@ class LivrosController extends Controller
     }
 
     
-    public function edit(Livro $livros)
+    public function edit($id)
     {
-        return view('livros.edit', compact('livros'));
+        $livro = Livro::findOrFail($id);
+    return view('livros.edit', compact('livro'));
     }
 
    
     public function update(Request $request, Livro $livros)
     {
-        $request->validate([
+    $request->validate([
             'titulo' => 'required',
             'autor' => 'required',
             'isbn' => 'required',
@@ -61,10 +62,9 @@ class LivrosController extends Controller
         ]);
 
         $livros->update($request->all());
-        return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso.');
-    }
+            return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso.'); 
+    } 
 
-   
     public function destroy(Livro $livros)
     {
         $livros->delete();

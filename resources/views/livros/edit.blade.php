@@ -9,7 +9,7 @@
                 <div class="p-6 bg-white dark:bg-gray-800">
                     <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Editar Livros</h1>
 
-                    <form action="{{ route('livros.update', $livros->id) }}" method="POST">
+                    <form action="{{ route('livros.update', $livro->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
